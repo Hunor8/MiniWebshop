@@ -1,0 +1,105 @@
+﻿<Window x:Class="MiniWeb.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MiniWeb"
+        mc:Ignorable="d"
+        Title="MiniWebshop" Height="600" Width="1050">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    Margin="0,0,0,10">
+            <Label Content="Kategória:"/>
+            <ComboBox Name="Szuro"
+                  Width="100"
+                  Margin="5,0"/>
+            <CheckBox Name="CsakSzuro"
+                  Content="Csak raktáron"
+                  VerticalAlignment="Center"
+                  Margin="10,0"/>
+            <Button Content="Frissítés"
+                    Name="Friss"
+                    Margin="10,0"
+                    Padding="10,5"
+                    Click="Friss_Click"/>
+            <Button Content="Szűrés alkalmazása"
+                    Name="SzuroAlk"
+                    Padding="10,5"
+                    Click="SzuroAlk_Click"/>
+        </StackPanel>
+        <GroupBox Header="Termékek"
+                  Grid.Row="1"
+                  Grid.Column="0"
+                  Margin="0,0,5,0">
+
+        <DataGrid Name="ProductsGrid"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              IsReadOnly="True"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" Width="60"/>
+                <DataGridTextColumn Header="Név" Binding="{Binding name}" Width="*"/>
+                <DataGridTextColumn Header="Ár" Binding="{Binding price}" Width="120"/>
+                <DataGridTextColumn Header="Kategória" Binding="{Binding category}" Width="140"/>
+                <DataGridCheckBoxColumn Header="Raktáron" Binding="{Binding inStock}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        </GroupBox>
+
+        <GroupBox Header="Szerkesztő"
+                  Grid.Row="1"
+                  Grid.Column="1"
+                  Margin="5,0,0,0">
+            <StackPanel Margin="5">
+                <Label Content="Név:"/>
+                <TextBox Name="txtNev"
+                         Margin="0,0,0,10"/>
+
+                <Label Content="Ár:"/>
+                <TextBox Name="txtAr"
+                         Margin="0,0,0,10"/>
+
+                <Label Content="Kategória:"/>
+                <ComboBox Name="Kategoria"
+                          Margin="0,0,0,5"/>
+
+                <CheckBox Name="RaktaronE"
+                          Content="Raktáron"
+                          Margin="0,0,0,10"/>
+
+                <Button Content="Új hozzáadása"
+                        Name="hozzaad"
+                        Margin="0,0,0,5"
+                        Click="hozzaad_Click"/>
+
+                <Button Content="Módosítás mentése"
+                        Name="ment"
+                        Margin="0,0,0,5"
+                        Click="ment_Click"/>
+
+                <Button Content="Törlés"
+                        Name="torol"
+                        Margin="0,0,0,5"
+                        Click="torol_Click"/>
+
+            </StackPanel>
+            
+        </GroupBox>
+
+    </Grid>
+</Window>
